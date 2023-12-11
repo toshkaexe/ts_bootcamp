@@ -1,4 +1,7 @@
-export const db = {
+import {DBType} from "../models/db/db";
+
+export const db:DBType = {
     blogs: [],
     post: []
 }
+

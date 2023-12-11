@@ -1,5 +1,5 @@
-// post
-export type BlogModel ={
+// post то, то посылаем клинту
+export type BlogModel = {
     id: string,
     name: string,
     description: string,
