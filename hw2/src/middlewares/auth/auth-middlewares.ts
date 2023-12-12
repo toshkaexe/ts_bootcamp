@@ -30,7 +30,7 @@ export const authMiddleware = (req: Request,
     //admin:qwerty
     const [login, password] = decodedData.split(":")
 
-    if (login !=== process.env.AUTH_LOGIN || password !=== process.env.AUTH_PASSWORD) {
+    if (login !== process.env.AUTH_LOGIN || password !== process.env.AUTH_PASSWORD) {
         res.sendStatus(StatusCode.Unauthorized_401)
         return
 

@@ -5,7 +5,7 @@ export class BlogRepository {
         return db.blogs
     }
 
-    static getBlogById(id: number) {
+    static getBlogById(id: string) {
         return db.blogs.find((b: { id: string }) => b.id === id)
     }
 }
