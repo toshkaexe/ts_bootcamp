@@ -3,16 +3,16 @@ import {BlogRepository} from "../repositories/blog-repository";
 import {authMiddleware} from "../middlewares/auth/auth-middlewares";
 import {blogValidation, nameValidation} from "../validators/blog-validator";
 
-export const blogRoute = Router({})
+export const postRoute = Router({})
 
-blogRoute.get('/', (req, res) => {
+postRoute.get('/', (req, res) => {
 
     const blogs = BlogRepository.getAllBlogs()
     res.send(blogs)
 })
 
 
-blogRoute.get('/:id', (req, res) => {
+postRoute.get('/:id', (req, res) => {
     const id = req.params.id
     const blog = BlogRepository.getBlogById(id)
 
@@ -23,7 +23,7 @@ blogRoute.get('/:id', (req, res) => {
     res.send(blog)
 })
 
-blogRoute.post('/', authMiddleware, blogValidation(), (req: Request, res: Response) => {
+postRoute.post('/', authMiddleware, blogValidation(), (req: Request, res: Response) => {
 
     const id= req.params.id
     const blog = BlogRepository.getBlogById(id)

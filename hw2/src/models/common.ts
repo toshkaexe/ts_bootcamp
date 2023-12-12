@@ -31,7 +31,6 @@ export type VideoDbType = {
     availableResolutions: typeof AvailableResolutions;
 }
 
-
 export type RequestWithBody<B> = Request<{}, {}, B, {}>;
 
 export type CreateVideoType = {
