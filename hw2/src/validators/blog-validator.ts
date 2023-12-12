@@ -23,4 +23,10 @@ export const websiteUrlValidation = body('websiteUrl')
     .withMessage("Incorrect websiteUrl!");
 
 
-export const blogValidation = () => [nameValidation, descriptionValidation, websiteUrlValidation, inputValidation]
+export const blogValidation = () =>
+    [
+        nameValidation,
+        descriptionValidation,
+        websiteUrlValidation,
+        inputValidation
+    ]
