@@ -2,7 +2,8 @@ import e, {NextFunction, Response, Request} from "express";
 import {validationResult, ValidationError} from "express-validator";
 
 export const inputValidation = (req: Request, res: Response, next: NextFunction) => {
-    const formattedError = validationResult(req).formatWith((error: ValidationError) => {
+    const formattedError = validationResult(req)
+        .formatWith((error: ValidationError) => {
 
             switch (error.type) {
                 case "field":

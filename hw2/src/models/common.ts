@@ -9,6 +9,7 @@ export const AvailableResolutions = [
     "P1080",
     "P1440",
     "P2160"];
+
 export enum StatusCode {
     OK_200 = 200,
     Created_201 = 201,
@@ -32,6 +33,8 @@ export type VideoDbType = {
 }
 
 export type RequestWithBody<B> = Request<{}, {}, B, {}>;
+export type RequestWithParams<P> = Request<P, {}, {}, {}>;
+export type RequestWithParamsAndBody<P, B> = Request<P, {}, B, {}>;
 
 export type CreateVideoType = {
     title: string,
@@ -45,4 +48,23 @@ export type ErrorMessageType = {
 }
 export type ErrorType = {
     errorsMessages: ErrorMessageType[]
+}
+
+export type BlogBody = {
+    name: string,
+    description: string,
+    websiteUrl: string
+}
+
+export type PostType = {
+    id: string,
+    title: string,
+    shortDescription: string,
+    content: string,
+    blogId: string,
+    description: string
+}
+
+export type Params = {
+    id: string
 }

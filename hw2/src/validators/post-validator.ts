@@ -1,5 +1,5 @@
 import {body} from "express-validator";
-import {inputValidation} from "../middlewares/input-model-validation-/input-validation";
+import {inputValidation} from "../middlewares/input-model-validation/input-validation";
 import {BlogRepository} from "../repositories/blog-repository";
 
 export const titleValidation = body('title')

@@ -3,5 +3,5 @@ import {PostModel} from "../posts/output";
 
 export type DBType = {
     blogs: BlogModel[],
-    post: PostModel[]
+    posts: PostModel[]
 }

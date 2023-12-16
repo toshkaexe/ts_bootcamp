@@ -35,7 +35,6 @@ export const authMiddleware = (req: Request,
         return
 
     }
-    return next()
-
+    return next();
 
 }
