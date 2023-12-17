@@ -20,4 +20,13 @@ export class PostRepository {
         return db.posts.push(cretePost);
 
     }
+
+    static createPost( createPost: PostModel){
+        return db.posts.push(createPost)
+    }
+
+    static removeAllPosts() {
+        db.posts.splice(0, db.posts.length);
+    }
+
 }

@@ -1,13 +1,20 @@
 import {DBType} from "../models/db/db";
 
-export const db:DBType = {
+export let db:DBType = {
     blogs: [
         {
             id: "12345",
             name: "string",
-            description: "test description",
+            description: "eins, zwei, drei",
             websiteUrl: "www.yandex.ru"
+        },
+        {
+            id: "1",
+            name: "hello",
+            description: "vier, fünf, sechs",
+            websiteUrl: "www.google.com"
         }
+
     ],
     posts: [
         {

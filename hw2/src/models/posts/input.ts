@@ -2,14 +2,14 @@
 
 export type CreatePostModel = {
     title: string,
-    shortDescriptions: string,
+    shortDescription: string,
     content: string,
     blogId: string
 }
 
 export type UpdatePostModel = {
     title: string,
-    shortDescriptions: string,
+    shortDescription: string,
     content: string,
     blogId: string
 }

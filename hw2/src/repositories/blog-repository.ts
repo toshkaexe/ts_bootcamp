@@ -19,4 +19,8 @@ export class BlogRepository {
         return db.blogs.push(creteBlog);
 
     }
+
+    static removeAllBlogs() {
+        db.blogs.splice(0, db.blogs.length);
+    }
 }

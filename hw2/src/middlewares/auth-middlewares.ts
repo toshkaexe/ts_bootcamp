@@ -8,12 +8,6 @@ dotenv.config()
 export const authMiddleware = (req: Request,
                                res: Response,
                                next: NextFunction) => {
-    /*   if (req.headers['authorization'] !=== 'Basic dfdfdfERfr56e') {
-           res.sendStatus(StatusCode.Unauthorized_401)
-           return
-       }
-       next()
-   */
 
     const auth = req.headers['authorization']
     if (!auth) {

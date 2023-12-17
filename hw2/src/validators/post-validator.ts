@@ -1,6 +1,7 @@
 import {body} from "express-validator";
 import {inputValidation} from "../middlewares/input-validation";
 import {BlogRepository} from "../repositories/blog-repository";
+import {PostRepository} from "../repositories/post-repository";
 
 export const titleValidation = body('title')
     .isString().withMessage("Incorrect name")
@@ -30,11 +31,15 @@ export const blogIdValidation = body('blogId')
             const blog = BlogRepository.getBlogById(value)
             if (!blog) {
                 throw Error("Incorrect blogId!")
-
             }
             return true;
         }
     )
     .withMessage("Incorrect blogId!");
 
-export const postValidation = () => [titleValidation, shortDescriptionValidation, contentValidation, blogIdValidation, inputValidation]
+export const postValidation = () => [
+    titleValidation,
+    shortDescriptionValidation,
+    contentValidation,
+    blogIdValidation,
+    inputValidation]
