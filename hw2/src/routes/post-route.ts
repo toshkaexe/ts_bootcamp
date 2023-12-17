@@ -4,11 +4,12 @@ import {authMiddleware} from "../middlewares/auth-middlewares";
 import {blogValidation, nameValidation} from "../validators/blog-validator";
 import {PostRepository} from "../repositories/post-repository";
 
-import {BlogBody, RequestWithBody} from "../models/common";
+import {BlogBody, Params, RequestWithBody, RequestWithParams} from "../models/common";
 import {randomUUID} from "crypto";
 import {blogRoute} from "./blog-route";
 import {CreatePostModel} from "../models/posts/input";
 import {postValidation} from "../validators/post-validator";
+import {db} from "../db/db";
 
 export const postRoute = Router({})
 
@@ -32,14 +33,16 @@ postRoute.get('/:id', (req, res) => {
 
 postRoute.post(
     '/',
-     authMiddleware,
+    authMiddleware,
     postValidation(),
     (req: RequestWithBody<CreatePostModel>, res: Response) => {
 
-        let {title,
+        let {
+            title,
             shortDescription,
             content,
-            blogId} = req.body;
+            blogId
+        } = req.body;
 
         const newPost = {
             id: randomUUID(),
@@ -54,25 +57,21 @@ postRoute.post(
     });
 
 
-
-
-
-
-
-
-
-
-
-postRoute.post('/ttt',
+postRoute.delete('/:id',
     authMiddleware,
-    postValidation(), (req: Request, res: Response) => {
 
-    const id= req.params.id
-    const blog = PostRepository.getPostById(id)
-
-    const blogs = PostRepository.getAllPosts()
-    if (!blog){
-        res.sendStatus(404)
-    }
-    res.send(blogs)
-})
+    (req: RequestWithParams<Params>, res: Response) => {
+        const id = req.params.id;
+        const post = PostRepository.getPostById(id);
+        if (!post) {
+            res.sendStatus(404);
+            return
+        }
+        const postIndex = db.posts.findIndex((p) => p.id == id);
+        if (postIndex == -1) {
+            res.sendStatus(404);
+            return;
+        }
+        db.posts.splice(postIndex, 1);
+        res.sendStatus(204);
+    })

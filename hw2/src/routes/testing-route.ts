@@ -14,7 +14,8 @@ testingRoute.delete('/all-data', (req: Request, res: Response) => {
         PostRepository.removeAllPosts();
         res.sendStatus(StatusCode.NoContent_204);
     } catch (error) {
-        console.error('Error resetting videos:', error);
+        console.error('Error resetting blogs:', error);
+        console.error('Error resetting posts:', error);
         res.status(
             StatusCode.InternalServerError_500)
             .send(
