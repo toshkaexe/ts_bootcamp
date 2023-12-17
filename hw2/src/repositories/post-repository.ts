@@ -9,7 +9,7 @@ export class PostRepository {
     }
 
     static getPostById(id: string) {
-        const post = db.blogs.find((b) => b.id === id);
+        const post = db.posts.find((b) => b.id === id);
         if (!post) {
             return null;
         }

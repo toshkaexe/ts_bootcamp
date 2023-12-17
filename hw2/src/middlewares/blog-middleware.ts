@@ -1,12 +1,12 @@
 import {body} from "express-validator";
-import {inputValidation} from "../input-model-validation/input-validation";
+import {inputValidation} from "./input-validation";
 
 
 export const nameValidation = body("name")
     .isString()
     .trim()
     .isLength({min: 1, max: 15})
-    .withMessage("Incorrect name!");
+    .withMessage("name is too long");
 export const descriptionValidation = body("description")
     .isString()
     .trim()
@@ -18,7 +18,7 @@ export const websiteUrlValidation = body("websiteUrl")
     .trim()
     .isLength({min: 1, max: 100})
     .matches("^https://([a-zA-Z0-9_-]+\\.)+[a-zA-Z0-9_-]+(\\/[a-zA-Z0-9_-]+)*\\/?$\n")
-    .withMessage("Incorrect url!");
+    .withMessage("website url does not match the template!");
 
 export const blogValidation = ()=>[
     nameValidation,

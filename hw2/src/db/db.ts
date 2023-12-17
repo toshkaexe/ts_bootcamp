@@ -15,7 +15,8 @@ export const db:DBType = {
             title: "test post title",
             shortDescription: "short test Description",
             content: "test content",
-            blogId: "12345"
+            blogId: "12345",
+            blogName: "string"
         }
     ]
 }

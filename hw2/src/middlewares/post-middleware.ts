@@ -1,6 +1,6 @@
 import {body} from "express-validator";
-import {BlogRepository} from "../../repositories/blog-repository";
-import {inputValidation} from "../input-model-validation/input-validation";
+import {BlogRepository} from "../repositories/blog-repository";
+import {inputValidation} from "./input-validation";
 
 const blogIdValidation = body("blogId")
     .isString()

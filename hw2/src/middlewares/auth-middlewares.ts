@@ -1,5 +1,5 @@
 import {NextFunction, Response, Request} from "express";
-import {StatusCode} from "../../models/common";
+import {StatusCode} from "../models/common";
 import dotenv from 'dotenv';
 
 
