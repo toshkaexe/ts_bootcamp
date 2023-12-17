@@ -1,6 +1,9 @@
 import {db} from "../db/db"
 import {blogRoute} from "../routes/blog-route";
 import {BlogModel} from "../models/blogs/output";
+import {UpdatePostModel} from "../models/posts/input";
+import {Params} from "../models/common";
+import {UpdateBlogModel} from "../models/blogs/input";
 
 export class BlogRepository {
     static getAllBlogs() {
@@ -22,5 +25,24 @@ export class BlogRepository {
 
     static removeAllBlogs() {
         db.blogs.splice(0, db.blogs.length);
+    }
+
+
+    static updateBlog(params: UpdateBlogModel, p1: Params) {
+        const blogIndex = db.blogs.findIndex(p => p.id === p1.id)
+        const blog = this.getBlogById(p1.id)
+        if (!blog) {
+            return false
+        }
+        const updateBlog = {
+            ...blog,
+            name: params.name,
+            description: params.description,
+            websiteUrl: params.websiteUrl
+        }
+        db.blogs.splice(blogIndex, 1, updateBlog)
+        return true;
+
+
     }
 }

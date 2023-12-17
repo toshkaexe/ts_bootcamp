@@ -2,6 +2,8 @@ import {db} from "../db/db"
 import {blogRoute} from "../routes/blog-route";
 import {BlogModel} from "../models/blogs/output";
 import {PostModel} from "../models/posts/output";
+import {UpdatePostModel} from "../models/posts/input";
+import {Params} from "../models/common";
 
 export class PostRepository {
     static getAllPosts() {
@@ -21,7 +23,7 @@ export class PostRepository {
 
     }
 
-    static createPost( createPost: PostModel){
+    static createPost(createPost: PostModel) {
         return db.posts.push(createPost)
     }
 
@@ -29,4 +31,22 @@ export class PostRepository {
         db.posts.splice(0, db.posts.length);
     }
 
+    static updatePost(params: UpdatePostModel, p1: Params) {
+        const postIndex = db.posts.findIndex(p => p.id === p1.id)
+        const post = this.getPostById(p1.id)
+        if (!post) {
+            return false
+        }
+        const updatePost = {
+            ...post,
+            title: params.title,
+            shortDescription: params.shortDescription,
+            content: params.content,
+            blogId: params.blogId
+        }
+        db.posts.splice(postIndex, 1, updatePost)
+        return true;
+
+
+    }
 }

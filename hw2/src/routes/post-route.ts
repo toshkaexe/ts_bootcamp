@@ -50,7 +50,7 @@ postRoute.post(
             shortDescription,
             content,
             blogId,
-            blogName: "blogName"
+            blogName: ""
         }
         PostRepository.createPost(newPost);
         return res.send(201).send(newPost);
