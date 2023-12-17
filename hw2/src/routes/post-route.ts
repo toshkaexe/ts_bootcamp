@@ -3,11 +3,12 @@ import {BlogRepository} from "../repositories/blog-repository";
 import {authMiddleware} from "../middlewares/auth-middlewares";
 import {blogValidation, nameValidation} from "../validators/blog-validator";
 import {PostRepository} from "../repositories/post-repository";
-import {postValidation} from "../validators/post-validator";
+
 import {BlogBody, RequestWithBody} from "../models/common";
 import {randomUUID} from "crypto";
 import {blogRoute} from "./blog-route";
 import {CreatePostModel} from "../models/posts/input";
+import {postValidation} from "../validators/post-validator";
 
 export const postRoute = Router({})
 
@@ -31,7 +32,7 @@ postRoute.get('/:id', (req, res) => {
 
 postRoute.post(
     '/',
-    authMiddleware,
+     authMiddleware,
     postValidation(),
     (req: RequestWithBody<CreatePostModel>, res: Response) => {
 
@@ -42,16 +43,25 @@ postRoute.post(
 
         const newPost = {
             id: randomUUID(),
-
-            title: title,
-            shortDescription: shortDescription,
-            content: content,
-            blogId: blogId,
+            title,
+            shortDescription,
+            content,
+            blogId,
             blogName: "blogName"
         }
         PostRepository.createPost(newPost);
         return res.send(201).send(newPost);
     });
+
+
+
+
+
+
+
+
+
+
 
 postRoute.post('/ttt',
     authMiddleware,

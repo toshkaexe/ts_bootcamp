@@ -26,7 +26,7 @@ export const websiteUrlValidation = body('websiteUrl')
 export const blogValidation = () =>
     [
         nameValidation,
-        descriptionValidation,
-        websiteUrlValidation,
-        inputValidation
+        descriptionValidation
+        /*websiteUrlValidation,
+        inputValidation*/
     ]

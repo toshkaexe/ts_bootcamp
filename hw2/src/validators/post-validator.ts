@@ -10,14 +10,16 @@ export const titleValidation = body('title')
     .withMessage("Incorrect title!");
 
 export const shortDescriptionValidation = body('shortDescription')
-    .isString().withMessage("Incorrect shortDescription")
+    .isString()
+    .withMessage("Incorrect shortDescription")
     .trim()
     .isLength({min: 1, max: 100})
     .withMessage("Incorrect shortDescription!");
 
 
 export const contentValidation = body('content')
-    .isString().withMessage("Incorrect content")
+    .isString()
+    .withMessage("Incorrect content")
     .trim()
     .isLength({min: 1, max: 1000})
     .withMessage("Incorrect content!");
@@ -42,4 +44,5 @@ export const postValidation = () => [
     shortDescriptionValidation,
     contentValidation,
     blogIdValidation,
-    inputValidation]
+    inputValidation
+    ]

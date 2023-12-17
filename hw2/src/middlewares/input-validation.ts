@@ -22,12 +22,13 @@ export const inputValidation = (req: Request, res: Response, next: NextFunction)
         }
     )
     if (!formattedError.isEmpty()) {
-        const errorMessage = formattedError.array({onlyFirstError: true})
+        const errorMessage =
+            formattedError.array({onlyFirstError: true})
         const errors = {
             errorsMessages: errorMessage
         }
         res.status(400).send(errors)
         return
     }
-    return next;
+    return next();
 }
