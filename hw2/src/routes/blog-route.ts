@@ -28,6 +28,20 @@ blogRoute.get('/:id', (req: Request, res: Response) => {
 })
 
 
+blogRoute.put('/:id',
+    authMiddleware,
+    blogValidation(),
+    (req: Request, res: Response) => {
+    const id = req.params.id
+    const blog = BlogRepository.getBlogById(id)
+
+    if (!blog) {
+        res.sendStatus(404)
+
+    }
+    res.send(blog)
+})
+
 blogRoute.post(
     '/',
     authMiddleware,
@@ -42,7 +56,7 @@ blogRoute.post(
             websiteUrl
         }
         BlogRepository.createBlog(newBlog);
-        return res.send(201).send(newBlog);
+        return res.status(201).send(newBlog);
     });
 
 

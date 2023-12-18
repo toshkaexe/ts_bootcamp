@@ -3,7 +3,7 @@ import {blogRoute} from "../routes/blog-route";
 import {BlogModel} from "../models/blogs/output";
 import {UpdatePostModel} from "../models/posts/input";
 import {Params} from "../models/common";
-import {UpdateBlogModel} from "../models/blogs/input";
+import {CreateBlogModel, UpdateBlogModel} from "../models/blogs/input";
 
 export class BlogRepository {
     static getAllBlogs() {
@@ -23,13 +23,15 @@ export class BlogRepository {
 
     }
 
+
     static removeAllBlogs() {
         db.blogs.splice(0, db.blogs.length);
     }
 
 
     static updateBlog(params: UpdateBlogModel, p1: Params) {
-        const blogIndex = db.blogs.findIndex(p => p.id === p1.id)
+        const blogIndex = db.blogs
+            .findIndex(p => p.id === p1.id)
         const blog = this.getBlogById(p1.id)
         if (!blog) {
             return false
